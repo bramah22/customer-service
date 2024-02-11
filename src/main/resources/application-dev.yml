@@ -1,0 +1,16 @@
+server:
+  port: 8084
+spring:
+  application:
+    name: customer-service
+  datasource:
+    url: jdbc:h2:mem:test-db
+    driver-class-name: org.h2.Driver
+  liquibase:
+    change-log: classpath:config/liquibase/master.xml
+  cloud:
+    discovery:
+        enabled: false
+  docker:
+    compose:
+      enabled: false
