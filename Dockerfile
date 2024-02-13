@@ -1,4 +1,4 @@
-FROM openjdk:21-ea-8-jdk-oracle
+FROM openjdk:17-alpine3.14
 ARG JAR_FILE=target/customer-service.jar
 
 WORKDIR /opt/app
