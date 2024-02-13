@@ -14,10 +14,10 @@
 	<name>customer-service</name>
 	<description>customer-service</description>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 		<spring-cloud.version>2023.0.0</spring-cloud.version>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.login>squ_d4d51f374785b063c21a843cd868c9cb8f31c992</sonar.login>
+		<sonar.login>squ_2c91cfe7db7fb8dbc0466f459cb1a0d1d2acacef</sonar.login>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
