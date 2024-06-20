@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .headers(httpSecurityHeadersConfigurer ->  httpSecurityHeadersConfigurer.frameOptions(HeadersConfigurer.FrameOptionsConfig::disable))
-                .authorizeHttpRequests(ar -> ar.requestMatchers("/api/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/**").permitAll())
+                .authorizeHttpRequests(ar -> ar.requestMatchers("/api/**", "/swagger-ui.html", "/swagger-ui/**", "/v3/**", "/actuator/**").permitAll())
                 .authorizeHttpRequests( ar -> ar.anyRequest().authenticated())
                 .build();
     }

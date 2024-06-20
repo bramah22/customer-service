@@ -17,7 +17,7 @@
 		<java.version>21</java.version>
 		<spring-cloud.version>2023.0.0</spring-cloud.version>
 		<sonar.host.url>http://localhost:9000</sonar.host.url>
-		<sonar.login>squ_d4d51f374785b063c21a843cd868c9cb8f31c992</sonar.login>
+		<sonar.token>squ_f5202ceb9473c0cb8d7756f67429b71aa7dce6cb</sonar.token>
 	</properties>
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/org.modelmapper/modelmapper -->
@@ -103,6 +103,15 @@
 		<dependency>
 			<groupId>org.liquibase</groupId>
 			<artifactId>liquibase-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>
