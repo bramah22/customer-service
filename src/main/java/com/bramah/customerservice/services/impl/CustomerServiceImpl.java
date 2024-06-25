@@ -33,7 +33,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDto findCustomerById(String id) throws CustomerNotFoundException{
         Optional<Customer> customer = customerRepository.findById(id);
         if (customer.isEmpty()) {
-            log.error("Customer with id: {} not found", id);
+            logNotFound(id);
             throw new CustomerNotFoundException();
         }
         return customerMapper.toDto(customer.get());
@@ -69,7 +69,7 @@ public class CustomerServiceImpl implements CustomerService {
     public CustomerDto updateCustomer(String id, CustomerDto customerDto) throws CustomerNotFoundException {
         Optional<Customer> customer = customerRepository.findById(id);
         if (customer.isEmpty()) {
-            log.error("Customer with id: {} not found", id);
+            logNotFound(id);
             throw new CustomerNotFoundException();
         }
         customerDto.setId(id);
@@ -82,9 +82,13 @@ public class CustomerServiceImpl implements CustomerService {
     public void deleteCustomerById(String id) throws CustomerNotFoundException {
         Optional<Customer> customer = customerRepository.findById(id);
         if (customer.isEmpty()) {
-            log.error("Customer with id: {} not found", id);
+            logNotFound(id);
             throw new CustomerNotFoundException();
         }
         customerRepository.deleteById(id);
+    }
+
+    private static void logNotFound(String id) {
+        log.error("Customer with id: {} not found", id);
     }
 }

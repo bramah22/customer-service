@@ -1,7 +1,6 @@
 package com.bramah.customerservice.repositories;
 
 import com.bramah.customerservice.entities.Customer;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -9,8 +8,7 @@ import org.springframework.test.context.ActiveProfiles;
 
 import java.util.List;
 import java.util.Optional;
-
-import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ActiveProfiles("test")
@@ -29,8 +27,10 @@ class CustomerRepositoryTest {
         Optional<Customer> result = customerRepository.findByEmail(givenEmail);
 
         // Then
-        assertThat(result).isPresent();
-        assertThat(result.get().getEmail()).isEqualTo(givenEmail);
+        assertThat(result).isPresent()
+                .get()
+                .extracting(Customer::getEmail)
+                .isEqualTo(givenEmail);
     }
 
     @Test
@@ -51,9 +51,11 @@ class CustomerRepositoryTest {
         );
 
         List<Customer> result = customerRepository.findByFirstNameContainsIgnoreCase(keyword);
-        assertThat(result).isNotNull();
-        assertThat(result.size()).isEqualTo(expected.size());
-        assertThat(result).usingRecursiveComparison().ignoringFields("id").isEqualTo(expected);
+        assertThat(result).isNotNull()
+                .hasSameSizeAs(expected)
+                .usingRecursiveComparison()
+                .ignoringFields("id")
+                .isEqualTo(expected);
 
     }
 
